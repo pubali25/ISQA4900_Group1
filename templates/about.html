@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+</head>
+{% block content %}
+<body>
+    <br><br><br>
+    <img src="{%  static "User/images/group.jpg"%}" class="center_img" height="250">
+    <br><br><br>
+    <div class="box1">
+        <p>  Hi there! Welcome to "Mypersonalspace". If this is the first time you are visiting us, please sign-up and you can then start looking
+             at the opportunites that we have put together, just for you! If you already have an account with us, please sign-in and dont bother reading this
+            again (we dont mind if you do!).
+            <br>Allow us to introduce ourselves: Left to Right as seen in the picture: Shireen, Shweta, Pubali and Aparna!<br><br>
+            Stress is something that comes with life and can be dangerous with long term impacts. Developing a hobby is one of the failproof ways to combat stress.
+            Hobbies can be physical or mental activities and at Mypersonalspace, we have shortlisted a few of them which we think can be very
+            beneficial for you! You can choose to go through one of our online classes or if you want something more exciting, come and see
+            us for our in-class activities! <br><br>
+            We are located at 1110 S 67th St, Omaha ,NE.
+            Please visit our <a href="{% url 'classes' %}">classes</a> page to see the various activities we offer online and in-class for further details.
+            We are glad you are here and we will help you in whatever way we can to connect with yourself!
+            <br>Get ready.. set.. and go! Learn... achieve... and encore..!!
+    </div>
+</body>
+{% endblock content %}
+</html>

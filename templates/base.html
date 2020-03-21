@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <title>My Personal Space</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="{% static "Hobbies/CSS/mpsmain.css" %}">
+  </head>
+  <body>
+  <div class="navbar navbar-inverse">
+{#    <div class="container-fluid">#}
+        <div class="navbar-header">
+
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#myNavbar" id="buttonFont">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'home' %}" class="active" >Home</a></li> <!-- href Home -->
+                <li><a  href="{% url 'about' %}">About Us</a></li>  <!-- href Home -->
+                <li><a href="{% url 'classes' %}">Classes</a></li>  <!-- changed to classes -->
+                <li><a href="{% url 'review' %}">Review Us</a></li>
+{#                centering the logo march 17#}
+                 <li class="nav navbar-nav navbar-center"><a  class="navbar-brand" href="{% url 'home' %}" style="padding:0px;margin:auto "><img src="{%  static "User/images/MPS_Logo.png"%}"  style="height:250%;" ></a></li>
+           </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                     {% if user.is_authenticated %}
+                        <li class="nav-item">
+                      <a class=" " href="#" id="userMenu"\
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded\
+                      ="false">
+                       Hi {{ user.username }}, <span class="caret"></span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right"
+                      aria-labelledby="userMenu">
+                          <a class="dropdown-item" href="{% url 'profile' %}">
+                        My Profile</a>
+                          <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'password_change'%}">
+                            Change password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">
+                        Log Out</a>
+                          <div class="dropdown-divider"></div>
+
+                      </div>
+                    </li>
+                    {%  else %}
+                    <li><a href="{% url 'signup' %}" >Signup</a></li>
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in" style="height: 50%"></span> Login</a></li>
+
+                    {% endif %}
+                    <li><a ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+        </div>
+  </div>
+{#  </div>#}
+  </nav>
+
+    <div class="container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </body>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">  <p>&copy; 2020 My PersonalSpace <br>
+  Contact information: <a href="mailto:mypersonalspace4900@gmail.com">
+            mypersonalspace4900@gmail.com</a></p></span>
+  </div>
+</footer>
+</html>
+
