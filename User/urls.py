@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PasswordResetMPSEmailView, SignUpView
+from .views import PasswordResetMPSEmailView, SignUpView, edit_profile
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView,\
     PasswordResetDoneView, PasswordResetConfirmView
 from django.views.generic.base import TemplateView
@@ -19,6 +19,7 @@ urlpatterns = [
     path('review/', TemplateView.as_view(template_name='review.html'), name='review'),
     path('classes/', login_required(TemplateView.as_view( template_name='classes.html')), name='classes'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('profile/', TemplateView.as_view(template_name='profile.html'), name='profile'),
+    #path('profile/', ProfileChangeView.as_view(template_name='profile.html'), name='profile'),
+    path('profile/', views.edit_profile, name='profile')
 ]
 
