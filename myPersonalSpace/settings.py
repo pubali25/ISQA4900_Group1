@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'User',
     'crispy_forms',
     'Hobbies',
+    'OnlineHobbies',
+    'Cart',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,8 @@ AUTH_USER_MODEL = 'User.User'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'User/media')
 
 # Email settings for MyPersonalSpace 4900 on feb 28 2020
 EMAIL_HOST = 'smtp.gmail.com'

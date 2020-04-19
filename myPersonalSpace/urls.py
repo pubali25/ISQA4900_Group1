@@ -13,15 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('mypersonalspace/admin/', admin.site.urls),
-    path('User/',include('User.urls')),
-    path('User/', include('django.contrib.auth.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+                  path('', TemplateView.as_view(template_name='home.html'), name='home'),
+                  path('mypersonalspace/admin/', admin.site.urls),
+                  path('User/', include('User.urls')),
+                  path('User/', include('django.contrib.auth.urls')),
+                  path('accounts/', include('django.contrib.auth.urls')),
+                  path('OnlineHobbies/', include('OnlineHobbies.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-]
+admin.site.site_header = 'MyPersonalSpace Administration' # default: "Django Administration"
+admin.site.index_title = 'MPS Site Administration'        # default: "Site administration"
+admin.site.site_title = 'MPS site admin'                  # default: "Django site admin"

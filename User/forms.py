@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 from django import forms
-from .models import User
-
+from .models import User, NewsUsers
 
 class UserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
@@ -21,4 +20,33 @@ class UserChangeForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email', 'cell_phone', 'address1', 'address2', 'city', 'state', 'zipcode')
+
+rateservices = [
+    ("Excellent", 'Excellent'),
+    ("Good", 'Good'),
+    ("Bad", 'Bad'),
+]
+
+recommend = [
+    ("Yes", 'Yes'),
+    ("No", 'No'),
+]
+
+class ContactForm(forms.Form):
+    rate_services = forms.CharField(widget=forms.RadioSelect(choices=rateservices))
+    likethebest = forms.CharField(
+        widget=forms.Textarea
+    )
+    howcanweimprove = forms.CharField(
+        widget=forms.Textarea
+    )
+    recommed_friends = forms.CharField(widget=forms.RadioSelect(choices=recommend))
+    anything = forms.CharField(
+        widget=forms.Textarea
+    )
+
+class NewsUserForm(forms.ModelForm):
+    class Meta:
+        model = NewsUsers
+        fields = ['email']
 

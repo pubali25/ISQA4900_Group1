@@ -1,0 +1,21 @@
+Hello {{ first_name }},
+
+Name:
+{{ username }}
+
+Email:
+{{ email }}
+
+Confirmation code:
+{{ id }}
+
+{% for item in hobbies.get_cart_items %}
+Class Name: {{ item.hobbies.hobby_name }}
+{{ item.hobbies.short_description}}
+Class Number:{{ item.hobbies.id}}
+
+{% endfor %}
+
+Thank you for the reservation! Please ensure to reach on time for your scheduled class.
+Please email us with your Confirmation code if you have any questions.
+A representative from MyPersonalSpace will get back to you.

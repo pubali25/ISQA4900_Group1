@@ -1,0 +1,21 @@
+Contact Name:
+{{ username }}
+
+Email:
+{{ email }}
+
+Rate Our Services:
+{{ rate_services }}
+
+What did you like the best?:
+{{ like_the_best }}
+
+How can we improve?:
+{{ how_can_we_improve }}
+
+Would you recommed us to your friends?:
+{{ recommed_friends }}
+
+Anything else you would like to add?:
+{{ anything }}
+

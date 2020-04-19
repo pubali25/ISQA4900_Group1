@@ -16,4 +16,14 @@ class User(AbstractUser):
     state = models.CharField(blank=True, default=' ', max_length=2, null=True)
     zipcode = models.CharField(blank=True, default=' ', max_length=5, null=True)
 
+class NewsUsers(models.Model):
+    email = models.EmailField()
+    date_added = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "NewsUser"
+        verbose_name_plural = "NewsUsers"
+        def __str__(self):
+            return self.email
+
 # Create your models here.

@@ -6,11 +6,34 @@
     <meta charset="UTF-8">
     <title>About us</title>
 </head>
+
+<style>
+{#body {font-family: Arial, Helvetica, sans-serif;}#}
+
+input[type=text], input[type=submit] {
+  width: 100%;
+  padding: 12px;
+  margin-right: auto;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: lightgray;
+  border: none;
+}
+{##}
+{#input[type=submit]:hover {#}
+{#  opacity: 0.8;#}
+{#}#}
+</style>
+
 {% block content %}
 <body>
-    <br><br><br>
+    <br><br>
     <img src="{%  static "User/images/group.jpg"%}" class="center_img" height="250">
-    <br><br><br>
+    <br>
     <div class="box1">
         <p>  Hi there! Welcome to "Mypersonalspace". If this is the first time you are visiting us, please sign-up and you can then start looking
              at the opportunites that we have put together, just for you! If you already have an account with us, please sign-in and dont bother reading this
@@ -24,7 +47,25 @@
             Please visit our <a href="{% url 'classes' %}">classes</a> page to see the various activities we offer online and in-class for further details.
             We are glad you are here and we will help you in whatever way we can to connect with yourself!
             <br>Get ready.. set.. and go! Learn... achieve... and encore..!!
-    </div>
-</body>
+
+    <h3>Come and Join the fun. Subscribe Here !</h3>
+    <form action="{% url 'subscribe' %}" method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button class="btn btn-warning" id="id_submit" name="submit" value="Subscribe" type="submit">Subscribe</button>
+        </div>
+    </form>
+    {% if messages %}
+        <div class="row" style="padding-top: 5px">
+         <div class="col-sm-7">
+             {% for message in messages %}
+             <p{% if message.tags == "success" %} class="alert alert-success"{% else %} class="alert alert-warning" {% endif %}> {{ message }}</p>
+             {% endfor %}
+         </div>
+        </div>
+    {% endif %}
 {% endblock content %}
+</div>
+</body>
 </html>
