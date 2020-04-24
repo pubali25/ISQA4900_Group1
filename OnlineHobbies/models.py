@@ -53,8 +53,8 @@ class OnlineClassVideoPage(models.Model):
     class_subtitle=models.CharField(max_length=100)
     class_requirements=models.TextField(max_length=2500)
     class_goal = models.TextField(max_length=2500)
-    class_video_links = models.CharField(max_length=25)
-
+    class_video_links = models.CharField(max_length=2500)
+    
     def __str__(self):
         return str(self.class_title)
 
